@@ -1,0 +1,26 @@
+[
+    {
+        "id": "P001",
+        "name": "Laptop",
+        "price": 10000.0,
+        "stock": 1,
+        "type": "physical",
+        "weight": 10.0
+    },
+    {
+        "id": "P002",
+        "name": "INF1103",
+        "price": 100.0,
+        "stock": 100,
+        "type": "digital",
+        "download_size": 10000.0
+    },
+    {
+        "id": "P003",
+        "name": "INF1102",
+        "price": 100.0,
+        "stock": 100,
+        "type": "digital",
+        "download_size": 10000000.0
+    }
+]
