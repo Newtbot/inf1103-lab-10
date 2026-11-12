@@ -32,10 +32,14 @@ class Inventory:
         else: 
             print("invalid data")
 
-    def remove_product(self, product_id) -> None: 
-        product = self.search_product(product_id)
-        if product: 
-            self.products.remove(product)
+    def remove_product(self, product_or_id: Product | str) -> None: 
+        if isinstance(product_or_id, Product):
+            if product_or_id in self.products:
+                self.products.remove(product_or_id)
+        else:
+            product = self.search_product(product_or_id)
+            if product: 
+                self.products.remove(product)
 
     def search_product(self, product_id: str) -> Product | None: 
         for prod in self.products: 

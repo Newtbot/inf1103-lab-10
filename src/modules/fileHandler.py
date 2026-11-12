@@ -5,7 +5,8 @@ import json
 from src.modules.inventory import Inventory                                                                                                                                                                                                                                                              
 from src.modules.product import Product    
 from src.modules.physicalProduct import PhysicalProduct
-from src.modules.digitalProduct import DigitalProduct                                                                                                                                                                                                                                                             
+from src.modules.digitalProduct import DigitalProduct
+from src.modules.supplier import Supplier                                                                                                                                                                                                                                                             
 
 class FileHandler:
     def __init__(self, filepath: str = "src/model/inventory.json"):
@@ -25,6 +26,12 @@ class FileHandler:
             except json.JSONDecodeError:
                 return
             for item in raw_data: 
+                supplier_info = item.get("supplier", {})
+                supplier = Supplier(
+                    supplier_id=supplier_info.get("id", "S001"),
+                    name=supplier_info.get("name", "Default Supplier"),
+                    contact_email=supplier_info.get("contact_email", "supplier@example.com")
+                )
                 if item["type"] == "physical":
                     #init the physical product class!
                     product = PhysicalProduct(
@@ -32,7 +39,8 @@ class FileHandler:
                         name = item["name"],
                         price = item["price"],
                         stock = item["stock"],
-                        weight = item["weight"]
+                        weight = item["weight"],
+                        supplier = supplier
                     )
                 elif item["type"] == "digital": 
                     product = DigitalProduct(
@@ -40,7 +48,8 @@ class FileHandler:
                         name = item["name"],
                         price = item["price"],
                         stock = item["stock"],
-                        download_size = item["download_size"]
+                        download_size = item["download_size"],
+                        supplier = supplier
                     )
                 inventory.add_product(product)
             # try:

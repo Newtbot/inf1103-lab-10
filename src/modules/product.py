@@ -44,8 +44,12 @@ class Product(ABC):
     def stock(self) -> int:
         return self.__stock
 
+    @property
+    def supplier(self) -> Supplier:
+        return self._supplier
+
     @abstractmethod
-    def get_fulfillment_info() -> str:
+    def get_fulfillment_info(self) -> str:
         pass
 
     #methods go here

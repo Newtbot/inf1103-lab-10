@@ -43,6 +43,16 @@ def main() -> None:
     print("\n[Digital Product Details]:")
     show_product_details(ebook)
 
+    print("\n--- 5. Testing Inventory Product Collection (Polymorphism & LSP) ---")
+    inventory = Inventory()
+    inventory.add_product(keyboard)
+    inventory.add_product(ebook)
+
+    # Single loop through the product collection, no isinstance checks
+    for product in inventory.products:
+        product.display_information()
+        print(product.get_fulfillment_info())
+
 
 if __name__ == "__main__":
     main()
