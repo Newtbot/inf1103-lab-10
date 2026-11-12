@@ -45,7 +45,7 @@ class PhysicalProduct(Product, CanBeShipped):
         data["weight"] = self.weight
         return data
  
-    def get_fulfillment_info(self) -> None:
+    def get_fulfillment_info(self) -> str:
         return f"Shipped via postal courier. Weight: {self.weight:.2f} kg."
 
     def calculate_shipping_cost(self) -> float:

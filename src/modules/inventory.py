@@ -46,3 +46,12 @@ class Inventory:
     def display_products(self) -> None:
         for prod in self.products:
             prod.display_information()
+
+    def show_product_details(self, product: Product) -> None: 
+        product.display_information()
+        print(product.get_fulfillment_info())
+
+
+def show_product_details(product: Product) -> None: 
+    product.display_information()
+    print(product.get_fulfillment_info())
